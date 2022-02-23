@@ -1,0 +1,22 @@
+# Android Studio configuration.
+*.iml
+.idea/
+
+# Gradle configuration.
+.gradle/
+gradle/.tmp
+gradle/caches
+gradle/daemon
+gradle/jdks
+gradle/native
+gradle/wrapper
+build/
+
+# User configuration.
+local.properties
+
+# OS configurations.
+.DS_Store
+
+# Android NDK cmake output.
+.cxx/
