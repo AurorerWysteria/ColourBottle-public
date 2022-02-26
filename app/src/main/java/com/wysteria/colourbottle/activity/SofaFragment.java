@@ -158,6 +158,7 @@ public class SofaFragment extends Fragment {
                 }
             }
         });
+
         return v;
     }
 }

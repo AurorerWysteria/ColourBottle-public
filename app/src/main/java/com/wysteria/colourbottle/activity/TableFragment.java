@@ -159,6 +159,7 @@ public class TableFragment extends Fragment {
                 }
             }
         });
+
         return v;
     }
 }

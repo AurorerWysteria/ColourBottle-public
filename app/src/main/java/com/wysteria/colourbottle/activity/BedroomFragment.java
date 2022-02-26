@@ -120,6 +120,7 @@ public class BedroomFragment extends Fragment {
 
             }
         });
+
         return v;
     }
 }

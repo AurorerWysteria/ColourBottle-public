@@ -162,7 +162,6 @@ public class LivingroomFragment extends Fragment {
             }
         });
 
-
         return v;
     }
 }

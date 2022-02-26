@@ -136,6 +136,7 @@ public class BathroomFragment extends Fragment {
                 }
             }
         });
+
         return v;
     }
 }

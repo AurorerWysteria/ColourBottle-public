@@ -146,7 +146,6 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
         calculateUVTransform = true;
 
         depthSettings.onCreate(this);
-//        AndroidTools.scaleImage(findViewById(R.id.delete_button));
     }
 
     @Override
@@ -451,43 +450,14 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
         new AlertDialog.Builder(this)
                 .setTitle(R.string.options_title_with_depth)
                 .setMessage(R.string.depth_use_explanation)
-                .setPositiveButton(
-                        R.string.button_text_enable_depth,
-                        (DialogInterface dialog, int which) -> {
+                .setPositiveButton(R.string.button_text_enable_depth, (DialogInterface dialog, int which) -> {
                             depthSettings.setUseDepthForOcclusion(true);
                         })
-                .setNegativeButton(
-                        R.string.button_text_disable_depth,
+                .setNegativeButton(R.string.button_text_disable_depth,
                         (DialogInterface dialog, int which) -> {
                             depthSettings.setUseDepthForOcclusion(false);
                         })
                 .show();
-    }
-
-    /**
-     * Shows checkboxes to the user to facilitate toggling of depth-based effects.
-     */
-    private void launchSettingsMenuDialog(View view) {
-        // Retrieves the current settings to show in the checkboxes.
-        resetSettingsMenuDialogCheckboxes();
-
-        // Shows the dialog to the user.
-        Resources resources = getResources();
-        if (session.isDepthModeSupported(Config.DepthMode.AUTOMATIC)) {
-            // With depth support, the user can select visualization options.
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.options_title_with_depth)
-                    .setMultiChoiceItems(resources.getStringArray(R.array.depth_options_array), settingsMenuDialogCheckboxes, (DialogInterface dialog, int which, boolean isChecked) -> settingsMenuDialogCheckboxes[which] = isChecked)
-                    .setPositiveButton(R.string.done, (DialogInterface dialogInterface, int which) -> applySettingsMenuDialogCheckboxes())
-                    .setNegativeButton(android.R.string.cancel, (DialogInterface dialog, int which) -> resetSettingsMenuDialogCheckboxes())
-                    .show();
-        } else {
-            // Without depth support, no settings are available.
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.options_title_without_depth)
-                    .setPositiveButton(R.string.done, (DialogInterface dialogInterface, int which) -> applySettingsMenuDialogCheckboxes())
-                    .show();
-        }
     }
 
     private void applySettingsMenuDialogCheckboxes() {
@@ -566,35 +536,8 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
                         bitmapReadyCallbacks.onBitmapReady(snapshotBitmap);
                     }
                 });
-
             }
         });
-
-    }
-
-    public void captureMethod(View v) {
-//    EGL10 egl = (EGL10) EGLContext.getEGL();
-//    GL10 gl = (GL10)egl.eglGetCurrentContext().getGL();
-//    v = getWindow().getDecorView();
-//
-//    String imagePath = null;
-//    Bitmap imageBitmap = createBitmapFromGLSurface(0, 0, v.getWidth(), v.getHeight(), gl);
-//
-//    if (imageBitmap != null) {
-//      imagePath = MediaStore.Images.Media.insertImage(getContentResolver(), imageBitmap, "Colour Bottle", null);
-//    }
-        //endregion
-
-        captureBitmap(new BitmapReadyCallbacks() {
-
-            @Override
-            public void onBitmapReady(Bitmap bitmap) {
-                MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Colour Bottle", null);
-            }
-        });
-
-
-        Toast.makeText(getApplicationContext(), "Screen Captured", Toast.LENGTH_SHORT).show();
     }
 
     private Bitmap createBitmapFromGLSurface(int x, int y, int w, int h, GL10 gl)
@@ -643,6 +586,5 @@ public class MainActivity extends AppCompatActivity implements GLSurfaceView.Ren
         }else if(plane_check==1){
             plane_check=0;
         }
-
     }
 }
